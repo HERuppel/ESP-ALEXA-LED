@@ -4,7 +4,7 @@ def do_connect():
     if not sta_if.isconnected():
         print('connecting to network...')
         sta_if.active(True)
-        sta_if.connect('Ruppel', '98624492')
+        sta_if.connect('SSID', 'password')
         while not sta_if.isconnected():
             pass
     print('network config:', sta_if.ifconfig())
