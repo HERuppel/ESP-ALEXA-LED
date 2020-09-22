@@ -1,21 +1,27 @@
 from machine import Pin
-import urequests as requests
-import time
+import utime
+from umqtt.simple import MQTTClient
+
+utime.sleep(5)
 
 led = Pin(5, Pin.OUT)
 
+def subs(topic, msg):
+  print(topic, msg)
+
+  if msg == b'0':
+    led.value(0)
+  elif msg == b'1':
+    led.value(1)
+
+
+c = MQTTClient("umqtt_client", "192.168.0.104")
+c.set_callback(subs)
+c.connect()
+c.subscribe(b"led1")
+
 while True:
-  try:
-    resp = requests.get(url = "http://ec2263c8db22.ngrok.io/read")
-    print(resp.text)
-    if resp.text == "on":
-      led.value(1)
-      time.sleep(1)
-    else:
-      led.value(0)
-      time.sleep(1)
-  except:
-    pass
+  c.wait_msg()
 
 
 

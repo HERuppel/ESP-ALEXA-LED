@@ -1,5 +1,0 @@
-welcome_text: Bem-vindo à Skill que controla o LED. Você pode dizer "Ligar LED", ou, "Desligar LED"
-
-command: Seu LED está a {{ onOffCommand }}
-
-command_reprompt: Você quer ligar ou desligar seu LED?
