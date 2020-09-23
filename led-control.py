@@ -3,7 +3,7 @@ from flask_ask import Ask, statement, question
 import paho.mqtt.publish as publish
 
 clientId = "PythonPublisher"
-host = "192.168.0.104"
+host = "GET_IP_BY_IPCONFIG"
 port = 1883
 topic = "led1"
 
